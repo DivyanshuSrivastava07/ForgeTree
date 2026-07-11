@@ -1,6 +1,7 @@
-from parser import Parser
-from tree_printer import TreePrinter
-from builder import Builder
+from scaffold.parser import Parser
+from scaffold.tree_printer import TreePrinter
+from scaffold.builder import Builder
+from scaffold.writer import FileSystemWriter
 
 text = """
 backend/
@@ -8,6 +9,8 @@ backend/
     app/
         main.py
 
+        
+        
         api/
             auth.py
             users.py
@@ -40,5 +43,4 @@ requirements.txt
 nodes = Parser().parse(text)
 roots = Builder().build(nodes)
 
-out = TreePrinter().render(roots)
-print(out)
+FileSystemWriter().write(roots,"python")
