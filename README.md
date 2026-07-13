@@ -1,12 +1,26 @@
-# Scaffold
+# ForgeTree
 
-A lightweight Python library for generating project directory structures from an indented text description.
+Stop creating project folders by hand.
 
-Instead of manually creating folders and files, describe your project structure in plain text and let Scaffold build it for you.
+ForgeTree converts a simple indented text description into a complete directory structure with a clean, modular architecture.
 
+Example:
+
+backend/
+    app/
+        main.py
+
+    ↓
+
+backend/
+└── app/
+    └── main.py
 ---
-## why I built it
-I built Scaffold while repeatedly creating the same project structures for experiments and side projects. I wanted a lightweight, extensible library that separates parsing, tree construction, rendering, and filesystem generation into independent components.
+## Why ForgeTree?
+
+While working on experiments and side projects, I found myself repeatedly creating the same directory structures by hand.
+
+ForgeTree was created to solve that problem by converting a simple indented text description into a complete project structure while keeping parsing, tree construction, rendering, and filesystem generation as independent components.
 
 ## Features
 
@@ -76,15 +90,44 @@ backend/
 
 ## Installation
 
+Clone the repository:
+
 ```bash
-pip install scaffold
+git clone https://github.com/DivyanshuSrivastava07/ForgeTree.git
+```
+
+Or install locally:
+
+```bash
+pip install -e .
 ```
 
 *(Coming soon)*
 
+```bash
+pip install scaffold
+```
+
 ---
 
 ## Usage
+
+## Quick Start
+
+```python
+from scaffold import generate
+
+tree = """
+backend/
+    app/
+        main.py
+
+requirements.txt
+"""
+
+generate(tree, "project")
+```
+## Advanced Usage
 
 ```python
 from scaffold.parser import Parser
@@ -119,30 +162,24 @@ writer.write(
 ---
 
 ## Architecture
-
 ```
-Text
- │
- ▼
-Parser
- │
- ▼
-ParsedNode
- │
- ▼
-Builder
- │
- ▼
-TreeNode
- ├──────────────► TreePrinter
- │
- ▼
-FileSystemWriter
- │
- ▼
-Filesystem
+Input Text
+     │
+     ▼
+ Parser
+     │
+     ▼
+ ParsedNode
+     │
+     ▼
+ Builder
+     │
+     ▼
+ TreeNode
+   ├────────────► TreePrinter
+   │
+   └────────────► FileSystemWriter
 ```
-
 ---
 
 ## Project Structure
@@ -152,6 +189,7 @@ scaffold/
 │
 ├── parser.py
 ├── builder.py
+├── facade.py
 ├── tree_printer.py
 ├── writer.py
 ├── models.py
@@ -166,7 +204,6 @@ scaffold/
 - [x] Tree Builder
 - [x] Tree Renderer
 - [x] File System Writer
-- [ ] Validator
 - [ ] CLI
 - [ ] File Templates
 - [ ] Variable Interpolation
@@ -174,8 +211,19 @@ scaffold/
 
 ---
 
+## Core Components
+
+- Parser – Converts text into parsed nodes.
+- Builder – Builds the tree hierarchy.
+- TreePrinter – Renders the tree.
+- FileSystemWriter – Writes files and folders.
+- generate() – One-line project generation.
+
+---
+
 ## Contributing
 
+ForgeTree is actively developed.
 Contributions, bug reports, and feature requests are welcome.
 
 ---
