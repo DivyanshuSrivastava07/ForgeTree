@@ -1,7 +1,7 @@
-from scaffold.parser import Parser
+from forgetree.parser import Parser
 # from scaffold.tree_printer import TreePrinter
-from scaffold.builder import Builder
-from scaffold.writer import FileSystemWriter
+from forgetree.builder import Builder
+from forgetree.writer import FileSystemWriter
 
 text = """
 backend/
