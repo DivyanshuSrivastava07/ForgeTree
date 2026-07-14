@@ -107,7 +107,7 @@ pip install -e .
 *(Coming soon)*
 
 ```bash
-pip install scaffold
+pip install forgetree
 ```
 
 ---
@@ -117,7 +117,7 @@ pip install scaffold
 ## Quick Start
 
 ```python
-from scaffold import generate
+from forgetree import generate
 
 tree = """
 backend/
@@ -132,10 +132,10 @@ generate(tree, "project")
 ## Advanced Usage
 
 ```python
-from scaffold.parser import Parser
-from scaffold.builder import Builder
-from scaffold.tree_printer import TreePrinter
-from scaffold.writer import FileSystemWriter
+from forgetree.parser import Parser
+from forgetree.builder import Builder
+from forgetree.tree_printer import TreePrinter
+from forgetree.writer import FileSystemWriter
 
 text = """
 backend/
@@ -187,7 +187,7 @@ Input Text
 ## Project Structure
 
 ```text
-scaffold/
+forgetree/
 │
 ├── parser.py
 ├── builder.py
